@@ -3,9 +3,11 @@
 {% block title %}New Metier{% endblock %}
 
 {% block body %}
-    <h1>Create new Metier</h1>
+    <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+        <h1 class="text-2xl font-semibold mb-6">Create new Metier</h1>
 
-    {{ include('metier/_form.html.twig') }}
+        {{ include('metier/_form.html.twig') }}
 
-    <a href="{{ path('app_metier_index') }}">back to list</a>
+        <a href="{{ path('app_metier_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to list</a>
+    </div>
 {% endblock %}

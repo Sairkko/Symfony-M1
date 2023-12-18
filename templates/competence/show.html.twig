@@ -3,24 +3,26 @@
 {% block title %}Competence{% endblock %}
 
 {% block body %}
-    <h1>Competence</h1>
+    <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+        <h1 class="text-2xl font-semibold mb-6">Competence</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ competence.id }}</td>
+        <table class="table w-full border-collapse">
+            <tbody>
+            <tr class="border-b">
+                <th class="py-2 px-4 border">Id</th>
+                <td class="py-2 px-4 border">{{ competence.id }}</td>
             </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ competence.nom }}</td>
+            <tr class="border-b">
+                <th class="py-2 px-4 border">Nom</th>
+                <td class="py-2 px-4 border">{{ competence.nom }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_competence_index') }}">back to list</a>
+        <a href="{{ path('app_competence_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to list</a>
 
-    <a href="{{ path('app_competence_edit', {'id': competence.id}) }}">edit</a>
+        <a href="{{ path('app_competence_edit', {'id': competence.id}) }}" class="block mt-2 text-yellow-500 hover:underline">Edit</a>
 
-    {{ include('competence/_delete_form.html.twig') }}
+        {{ include('competence/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

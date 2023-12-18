@@ -3,33 +3,35 @@
 {% block title %}Competence index{% endblock %}
 
 {% block body %}
-    <h1>Competence index</h1>
+    <div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+        <h1 class="text-2xl font-semibold mb-6">Competence index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
+        <table class="table w-full border-collapse">
+            <thead>
+            <tr class="bg-gray-200">
+                <th class="py-2 px-4 border">Id</th>
+                <th class="py-2 px-4 border">Nom</th>
+                <th class="py-2 px-4 border">Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for competence in competences %}
-            <tr>
-                <td>{{ competence.id }}</td>
-                <td>{{ competence.nom }}</td>
-                <td>
-                    <a href="{{ path('app_competence_show', {'id': competence.id}) }}">show</a>
-                    <a href="{{ path('app_competence_edit', {'id': competence.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for competence in competences %}
+                <tr class="border-b">
+                    <td class="py-2 px-4 border">{{ competence.id }}</td>
+                    <td class="py-2 px-4 border">{{ competence.nom }}</td>
+                    <td class="py-2 px-4 border">
+                        <a href="{{ path('app_competence_show', {'id': competence.id}) }}" class="text-blue-500 hover:underline">show</a>
+                        <a href="{{ path('app_competence_edit', {'id': competence.id}) }}" class="text-yellow-500 hover:underline">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="py-2 px-4 border" colspan="3">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_competence_new') }}">Create new</a>
+        <a href="{{ path('app_competence_new') }}" class="block mt-4 text-blue-500 hover:underline">Create new</a>
+    </div>
 {% endblock %}
