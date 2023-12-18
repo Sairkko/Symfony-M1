@@ -1,0 +1,16 @@
+0fff4c,127.0.0.1,GET,https://127.0.0.1:8000/,1702911376,,200,request
+1cceb0,127.0.0.1,GET,https://127.0.0.1:8000/new,1702911378,,200,request
+e0191e,127.0.0.1,GET,https://127.0.0.1:8000/,1702911381,,200,request
+98aec7,127.0.0.1,GET,https://127.0.0.1:8000/competence/,1702911384,,200,request
+607ea0,127.0.0.1,GET,https://127.0.0.1:8000/competence/new,1702911386,,200,request
+f74e5c,127.0.0.1,POST,https://127.0.0.1:8000/competence/new,1702911389,,303,request
+f72eca,127.0.0.1,GET,https://127.0.0.1:8000/competence/,1702911389,,200,request
+0bb4e2,127.0.0.1,GET,https://127.0.0.1:8000/activite/,1702911394,,200,request
+12e814,127.0.0.1,GET,https://127.0.0.1:8000/activite/new,1702911395,,200,request
+890d90,127.0.0.1,POST,https://127.0.0.1:8000/activite/new,1702911404,,303,request
+a9334a,127.0.0.1,GET,https://127.0.0.1:8000/activite/,1702911404,,200,request
+049693,127.0.0.1,GET,https://127.0.0.1:8000/,1702911408,,200,request
+6e6c64,127.0.0.1,GET,https://127.0.0.1:8000/new,1702911409,,200,request
+a71024,127.0.0.1,POST,https://127.0.0.1:8000/new,1702911414,,303,request
+9c8223,127.0.0.1,GET,https://127.0.0.1:8000/,1702911414,,200,request
+df58f6,127.0.0.1,GET,https://127.0.0.1:8000/,1702911459,,200,request
