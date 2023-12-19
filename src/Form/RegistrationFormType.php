@@ -45,22 +45,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('role', ChoiceType::class, [
-                'choices' => [
-                    'Situation' => null,
-                    'Lycéen' => 'ROLE_STUDENT',
-                    'Lycée' => 'ROLE_SCHOOL',
-                ],
-                'mapped' => false,
-                'label' => 'Role',
-                'choice_attr' => function($choice, $key, $value) {
-                    // Ajoutez l'attribut 'disabled' à l'option 'Situation'
-                    if ($key === 'Situation') {
-                        return ['disabled' => 'disabled'];
-                    }
-                    return [];
-                },
-            ])
+            ->add('inscription', InscriptionType::class)
         ;
     }
 

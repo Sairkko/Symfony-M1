@@ -3,12 +3,19 @@
 namespace App\Entity;
 
 use App\Repository\RessourceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RessourceRepository::class)]
 class Ressource
 {
+    public function __toString()
+    {
+        return $this->type;
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -20,8 +27,13 @@ class Ressource
     #[ORM\Column(type: Types::TEXT)]
     private ?string $contenu = null;
 
-    #[ORM\ManyToOne(inversedBy: 'ressource')]
-    private ?Atelier $atelier = null;
+    #[ORM\OneToMany(mappedBy: 'ressource', targetEntity: Atelier::class)]
+    private Collection $ateliers;
+
+    public function __construct()
+    {
+        $this->ateliers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,14 +64,32 @@ class Ressource
         return $this;
     }
 
-    public function getAtelier(): ?Atelier
+    /**
+     * @return Collection<int, Atelier>
+     */
+    public function getAteliers(): Collection
     {
-        return $this->atelier;
+        return $this->ateliers;
     }
 
-    public function setAtelier(?Atelier $atelier): static
+    public function addAtelier(Atelier $atelier): static
     {
-        $this->atelier = $atelier;
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->setRessource($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAtelier(Atelier $atelier): static
+    {
+        if ($this->ateliers->removeElement($atelier)) {
+            // set the owning side to null (unless already changed)
+            if ($atelier->getRessource() === $this) {
+                $atelier->setRessource(null);
+            }
+        }
 
         return $this;
     }
