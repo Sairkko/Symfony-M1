@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Inscription;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
@@ -41,8 +42,8 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $role = $form->get('role')->getData();
-            $user->setRoles([$role]);
+            $user->setRoles(['ROLE_STUDENT']);
+
 
             $entityManager->persist($user);
             $entityManager->flush();

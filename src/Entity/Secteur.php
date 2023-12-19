@@ -3,42 +3,43 @@
 namespace App\Entity;
 
 use App\Repository\SecteurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SecteurRepository::class)]
 class Secteur
 {
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nnom = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'secteur')]
-    private ?Atelier $atelier = null;
+    #[ORM\OneToMany(mappedBy: 'secteur', targetEntity: Atelier::class)]
+    private Collection $ateliers;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
+
+    public function __construct()
+    {
+        $this->ateliers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNnom(): ?string
-    {
-        return $this->nnom;
-    }
-
-    public function setNnom(string $nnom): static
-    {
-        $this->nnom = $nnom;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -52,14 +53,44 @@ class Secteur
         return $this;
     }
 
-    public function getAtelier(): ?Atelier
+    /**
+     * @return Collection<int, Atelier>
+     */
+    public function getAteliers(): Collection
     {
-        return $this->atelier;
+        return $this->ateliers;
     }
 
-    public function setAtelier(?Atelier $atelier): static
+    public function addAtelier(Atelier $atelier): static
     {
-        $this->atelier = $atelier;
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->setSecteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAtelier(Atelier $atelier): static
+    {
+        if ($this->ateliers->removeElement($atelier)) {
+            // set the owning side to null (unless already changed)
+            if ($atelier->getSecteur() === $this) {
+                $atelier->setSecteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
 
         return $this;
     }

@@ -32,6 +32,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Inscription $inscription = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,6 +113,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getInscription(): ?Inscription
+    {
+        return $this->inscription;
+    }
+
+    public function setInscription(Inscription $inscription): static
+    {
+        // set the owning side of the relation if necessary
+        if ($inscription->getUser() !== $this) {
+            $inscription->setUser($this);
+        }
+
+        $this->inscription = $inscription;
 
         return $this;
     }

@@ -16,15 +16,22 @@
             'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}
         }) }}
 
+        {{ form_row(registrationForm.inscription.nom, {'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}}) }}
+        {{ form_row(registrationForm.inscription.prenom, {
+            'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}
+        }) }}
+
+        {{ form_row(registrationForm.inscription.telephone, {'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}}) }}
+        {{ form_row(registrationForm.inscription.lycee, {
+            'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}
+        }) }}
+
+        {{ form_row(registrationForm.inscription.section, {'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}}) }}
+
         <div class="flex gap-2 mb-2 items-center">
             {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'mb-0'}}) }}
             {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'mr-2'}}) }}
         </div>
-
-        {{ form_row(registrationForm.role, {
-            'label': 'Role',
-            'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}
-        }) }}
 
         <button type="submit" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none">
             Register
