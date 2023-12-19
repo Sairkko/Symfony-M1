@@ -21,11 +21,11 @@ class InscriptionType extends AbstractType
             ->add('prenom')
             ->add('lycee', EntityType::class, [
                 'class' => Lycee::class,
-'choice_label' => 'nom',
+                'choice_label' => 'nom',
             ])
             ->add('section', EntityType::class, [
                 'class' => Section::class,
-'choice_label' => 'nom',
+                'choice_label' => 'nom',
             ])
         ;
     }

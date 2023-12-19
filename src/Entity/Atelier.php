@@ -38,6 +38,9 @@ class Atelier
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_fin = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $intervenant = null;
+
     public function __construct()
     {
     }
@@ -128,6 +131,18 @@ class Atelier
     public function setDateFin(\DateTimeInterface $date_fin): static
     {
         $this->date_fin = $date_fin;
+
+        return $this;
+    }
+
+    public function getIntervenant(): ?string
+    {
+        return $this->intervenant;
+    }
+
+    public function setIntervenant(string $intervenant): static
+    {
+        $this->intervenant = $intervenant;
 
         return $this;
     }
