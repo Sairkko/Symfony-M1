@@ -6,52 +6,52 @@
                 <div class="border-2 col-span-12 border-blue-500 rounded-lg align-center flex flex-col gap-y-2 text-center items-center justify-center p-2">
                     <p class="text-2xl">Ateliers</p>
                     <p>Liste de tous les ateliers disponibles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/atelier">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_atelier_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Métier</p>
                     <p>Liste de tous les métiers disponibles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/metier">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_metier_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Activités</p>
                     <p>Liste de toutes les activités disponibles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/activite">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_activite_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Compétences</p>
                     <p>Liste de toutes les compétences</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/competence">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_competence_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Secteurs</p>
                     <p>Liste de tous les secteurs</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/secteur">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_secteur_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Ressources</p>
                     <p>Liste de toutes les ressources disponibles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/ressource">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_ressource_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Salles</p>
                     <p>Liste de toutes les salles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/salle">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_salle_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Lycéens</p>
                     <p>Liste de tous les lycéens</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/lyceen">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_inscription_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Lycée</p>
                     <p>Liste de tous les lycées des lycéens</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/lycee">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_lycee_index') }}">Détails</a>
                 </div>
                 <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
                     <p class="text-2xl">Sections</p>
                     <p>Liste de toutes les sections</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/section">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_section_index') }}">Détails</a>
                 </div>
             </div>
         {% endif %}
@@ -77,6 +77,11 @@
                         <p class="text-gray-600 text-sm mb-2">
                             <span class="font-semibold">Secteur :</span> {{ atelier.getSecteur() }}
                         </p>
+                        <div class="flex items-center justify-center">
+                            <p class="inline-block px-5 bg-blue-500 text-white border rounded">
+                                <span class="font-semibold">Intervenant(s):</span> {{ atelier.getIntervenant() }}
+                            </p>
+                        </div>
                         <!-- Ajoutez d'autres informations selon vos besoins -->
                     </div>
 
