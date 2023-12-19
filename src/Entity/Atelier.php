@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AtelierRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AtelierRepository::class)]
@@ -15,27 +16,30 @@ class Atelier
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: Metier::class, inversedBy: 'ateliers')]
-    private Collection $metier;
-
-    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: Ressource::class)]
-    private Collection $ressource;
-
-    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: Secteur::class)]
-    private Collection $secteur;
-
-    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: Salle::class)]
-    private Collection $salle;
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[ORM\ManyToOne(inversedBy: 'ateliers')]
+    private ?Salle $salle = null;
+
+    #[ORM\ManyToOne(inversedBy: 'ateliers')]
+    private ?Metier $metier = null;
+
+    #[ORM\ManyToOne(inversedBy: 'ateliers')]
+    private ?Ressource $ressource = null;
+
+    #[ORM\ManyToOne(inversedBy: 'ateliers')]
+    private ?Secteur $secteur = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $date_debut = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $date_fin = null;
+
     public function __construct()
     {
-        $this->metier = new ArrayCollection();
-        $this->ressource = new ArrayCollection();
-        $this->secteur = new ArrayCollection();
-        $this->salle = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -43,119 +47,6 @@ class Atelier
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, Metier>
-     */
-    public function getMetier(): Collection
-    {
-        return $this->metier;
-    }
-
-    public function addMetier(Metier $metier): static
-    {
-        if (!$this->metier->contains($metier)) {
-            $this->metier->add($metier);
-        }
-
-        return $this;
-    }
-
-    public function removeMetier(Metier $metier): static
-    {
-        $this->metier->removeElement($metier);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Ressource>
-     */
-    public function getRessource(): Collection
-    {
-        return $this->ressource;
-    }
-
-    public function addRessource(Ressource $ressource): static
-    {
-        if (!$this->ressource->contains($ressource)) {
-            $this->ressource->add($ressource);
-            $ressource->setAtelier($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRessource(Ressource $ressource): static
-    {
-        if ($this->ressource->removeElement($ressource)) {
-            // set the owning side to null (unless already changed)
-            if ($ressource->getAtelier() === $this) {
-                $ressource->setAtelier(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Secteur>
-     */
-    public function getSecteur(): Collection
-    {
-        return $this->secteur;
-    }
-
-    public function addSecteur(Secteur $secteur): static
-    {
-        if (!$this->secteur->contains($secteur)) {
-            $this->secteur->add($secteur);
-            $secteur->setAtelier($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSecteur(Secteur $secteur): static
-    {
-        if ($this->secteur->removeElement($secteur)) {
-            // set the owning side to null (unless already changed)
-            if ($secteur->getAtelier() === $this) {
-                $secteur->setAtelier(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Secteur>
-     */
-    public function getSalle(): Collection
-    {
-        return $this->salle;
-    }
-
-    public function addSalle(Salle $salle): static
-    {
-        if (!$this->salle->contains($salle)) {
-            $this->salle->add($salle);
-            $salle->setAtelier($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSalle(Salle $salle): static
-    {
-        if ($this->salle->removeElement($salle)) {
-            // set the owning side to null (unless already changed)
-            if ($salle->getAtelier() === $this) {
-                $salle->setAtelier(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getNom(): ?string
     {
@@ -165,6 +56,78 @@ class Atelier
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getSalle(): ?Salle
+    {
+        return $this->salle;
+    }
+
+    public function setSalle(?Salle $salle): static
+    {
+        $this->salle = $salle;
+
+        return $this;
+    }
+
+    public function getMetier(): ?Metier
+    {
+        return $this->metier;
+    }
+
+    public function setMetier(?Metier $metier): static
+    {
+        $this->metier = $metier;
+
+        return $this;
+    }
+
+    public function getRessource(): ?Ressource
+    {
+        return $this->ressource;
+    }
+
+    public function setRessource(?Ressource $ressource): static
+    {
+        $this->ressource = $ressource;
+
+        return $this;
+    }
+
+    public function getSecteur(): ?Secteur
+    {
+        return $this->secteur;
+    }
+
+    public function setSecteur(?Secteur $secteur): static
+    {
+        $this->secteur = $secteur;
+
+        return $this;
+    }
+
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->date_debut;
+    }
+
+    public function setDateDebut(\DateTimeInterface $date_debut): static
+    {
+        $this->date_debut = $date_debut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->date_fin;
+    }
+
+    public function setDateFin(\DateTimeInterface $date_fin): static
+    {
+        $this->date_fin = $date_fin;
 
         return $this;
     }

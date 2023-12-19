@@ -16,7 +16,7 @@ class Section
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nnom = null;
+    private ?string $nom = null;
 
     #[ORM\OneToMany(mappedBy: 'section', targetEntity: Inscription::class)]
     private Collection $inscriptions;
@@ -31,14 +31,14 @@ class Section
         return $this->id;
     }
 
-    public function getNnom(): ?string
+    public function getNom(): ?string
     {
-        return $this->nnom;
+        return $this->nom;
     }
 
-    public function setNnom(string $nnom): static
+    public function setNom(string $nom): static
     {
-        $this->nnom = $nnom;
+        $this->nom = $nom;
 
         return $this;
     }

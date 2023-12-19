@@ -11,6 +11,8 @@
             <tr class="bg-gray-200">
                 <th class="py-2 px-4 border">Id</th>
                 <th class="py-2 px-4 border">Nom</th>
+                <th class="py-2 px-4 border">Competence</th>
+                <th class="py-2 px-4 border">Activite</th>
                 <th class="py-2 px-4 border">Actions</th>
             </tr>
             </thead>
@@ -19,6 +21,8 @@
                 <tr class="border-b">
                     <td class="py-2 px-4 border">{{ metier.id }}</td>
                     <td class="py-2 px-4 border">{{ metier.nom }}</td>
+                    <td class="py-2 px-4 border">{{ metier.competence }}</td>
+                    <td class="py-2 px-4 border">{{ metier.activite }}</td>
                     <td class="py-2 px-4 border">
                         <a href="{{ path('app_metier_show', {'id': metier.id}) }}" class="text-blue-500 hover:underline">show</a>
                         <a href="{{ path('app_metier_edit', {'id': metier.id}) }}" class="text-yellow-500 hover:underline">edit</a>

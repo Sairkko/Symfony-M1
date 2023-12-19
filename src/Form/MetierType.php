@@ -18,11 +18,11 @@ class MetierType extends AbstractType
             ->add('nom')
             ->add('competence', EntityType::class, [
                 'class' => Competence::class,
-'choice_label' => 'id',
+'choice_label' => 'nom',
             ])
             ->add('activite', EntityType::class, [
                 'class' => Activite::class,
-'choice_label' => 'id',
+'choice_label' => 'nom',
             ])
         ;
     }

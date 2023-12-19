@@ -1,0 +1,9 @@
+{{ form_start(form, {'attr': {'class': 'max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md'}}) }}
+
+{% for child in form.children %}
+    {{ form_row(child, {'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}}) }}
+{% endfor %}
+
+<button type="submit" class="btn bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}

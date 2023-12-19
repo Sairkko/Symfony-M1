@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AtelierRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,16 +12,12 @@ class FrontController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
 
-    public function index(): Response
+    public function index(AtelierRepository $atelierRepository): Response
     {
-
+        $ateliers = $atelierRepository->findAll();
 
         return $this->render('front/index.html.twig', [
-            'controller_name' => 'FrontController',
+            'ateliers' => $ateliers,
         ]);
     }
-
-
-
-
 }

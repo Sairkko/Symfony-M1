@@ -3,11 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\MetierRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MetierRepository::class)]
 class Metier
 {
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -21,6 +28,14 @@ class Metier
 
     #[ORM\ManyToOne(inversedBy: 'metiers')]
     private ?Activite $activite = null;
+
+    #[ORM\ManyToOne(inversedBy: 'metiers')]
+    private ?Atelier $atelier = null;
+
+
+    public function __construct()
+    {
+    }
 
     public function getId(): ?int
     {
@@ -62,4 +77,17 @@ class Metier
 
         return $this;
     }
+
+    public function getAtelier(): ?Atelier
+    {
+        return $this->atelier;
+    }
+
+    public function setAtelier(?Atelier $atelier): static
+    {
+        $this->atelier = $atelier;
+
+        return $this;
+    }
+
 }
