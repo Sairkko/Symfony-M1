@@ -15,6 +15,15 @@
         {% endblock %}
     </head>
     <body>
+    <div class="flex items-center justify-end gap-x-2 bg-blue-500 text-white text-xl">
+        {% if app.user %}
+            <a class="p-4" href="/">Accueil</a>
+            <a class="p-4" href="/logout">Se déconnecter</a>
+        {% else %}
+            <a class="p-4" href="/login">Se connecter</a>
+            <a class="p-4" href="/register">S'inscrire</a>
+        {% endif %}
+    </div>
         {% block body %}{% endblock %}
     </body>
 </html>

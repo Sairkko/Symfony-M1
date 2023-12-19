@@ -1,13 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="flex items-center justify-end gap-x-2 bg-blue-500 text-white text-xl">
-        {% if app.user %}
-            <a class="p-4" href="/logout">Se déconnecter</a>
-        {% else %}
-            <a class="p-4" href="/login">Se connecter</a>
-            <a class="p-4" href="/register">S'inscrire</a>
-        {% endif %}
-    </div>
     <div class="container mx-auto">
         {% if is_granted('ROLE_ADMIN') %}
             <div class="grid gap-2 m-24 mb-0 mt-8">
