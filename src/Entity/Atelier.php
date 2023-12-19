@@ -32,10 +32,10 @@ class Atelier
     #[ORM\ManyToOne(inversedBy: 'ateliers')]
     private ?Secteur $secteur = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_debut = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_fin = null;
 
     public function __construct()

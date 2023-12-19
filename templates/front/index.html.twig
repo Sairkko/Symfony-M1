@@ -1,67 +1,97 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="flex items-center justify-end gap-x-2 bg-blue-500 text-white text-xl">
-    {% if app.user %}
-        <a class="p-4" href="/logout">Se déconnecter</a>
-    {% else %}
-        <a class="p-4" href="/login">Se connecter</a>
-        <a class="p-4" href="/register">S'inscrire</a>
-    {% endif %}
-</div>
-<div class="container mx-auto">
-    {% if is_granted('ROLE_ADMIN') %}
-    <div class="grid grid-cols-12 gap-2 mt-2 mx-96">
-        <div class="border-2 col-span-12 border-blue-500 rounded-lg align-center flex flex-col gap-y-2 text-center items-center justify-center p-2">
-            <p class="text-2xl">Ateliers</p>
-            <p>Liste de tous les ateliers disponibles</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/atelier">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Métier</p>
-            <p>Liste de tous les métiers disponibles</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/metier">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Activités</p>
-            <p>Liste de toutes les activités disponibles</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/activite">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Compétences</p>
-            <p>Liste de toutes les compétences</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/competence">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Secteurs</p>
-            <p>Liste de tous les secteurs</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/secteur">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Ressources</p>
-            <p>Liste de toutes les ressources disponibles</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/ressource">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Salles</p>
-            <p>Liste de toutes les salles</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/salle">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Lycéens</p>
-            <p>Liste de tous les lycéens</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/lyceen">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Lycée</p>
-            <p>Liste de tous les lycées des lycéens</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/lycee">Détails</a>
-        </div>
-        <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-            <p class="text-2xl">Sections</p>
-            <p>Liste de toutes les sections</p>
-            <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/section">Détails</a>
-        </div>
+    <div class="flex items-center justify-end gap-x-2 bg-blue-500 text-white text-xl">
+        {% if app.user %}
+            <a class="p-4" href="/logout">Se déconnecter</a>
+        {% else %}
+            <a class="p-4" href="/login">Se connecter</a>
+            <a class="p-4" href="/register">S'inscrire</a>
+        {% endif %}
     </div>
-    {% endif %}
-</div>
+    <div class="container mx-auto">
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="grid gap-2 m-24 mb-0 mt-8">
+                <div class="border-2 col-span-12 border-blue-500 rounded-lg align-center flex flex-col gap-y-2 text-center items-center justify-center p-2">
+                    <p class="text-2xl">Ateliers</p>
+                    <p>Liste de tous les ateliers disponibles</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/atelier">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Métier</p>
+                    <p>Liste de tous les métiers disponibles</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/metier">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Activités</p>
+                    <p>Liste de toutes les activités disponibles</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/activite">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Compétences</p>
+                    <p>Liste de toutes les compétences</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/competence">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Secteurs</p>
+                    <p>Liste de tous les secteurs</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/secteur">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Ressources</p>
+                    <p>Liste de toutes les ressources disponibles</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/ressource">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Salles</p>
+                    <p>Liste de toutes les salles</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/salle">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Lycéens</p>
+                    <p>Liste de tous les lycéens</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/lyceen">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Lycée</p>
+                    <p>Liste de tous les lycées des lycéens</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/lycee">Détails</a>
+                </div>
+                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
+                    <p class="text-2xl">Sections</p>
+                    <p>Liste de toutes les sections</p>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="/admin/section">Détails</a>
+                </div>
+            </div>
+        {% endif %}
+        <h1 class="text-2xl font-bold mb-4 p-6 text-center">Forum 2024 - Liste des ateliers</h1>
+
+        {% if ateliers is not empty %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% for atelier in ateliers %}
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-semibold mb-2">{{ atelier.getNom() }}</h2>
+                        <p class="text-gray-600 text-sm mb-2">
+                            <span class="font-semibold">Date :</span> Du {{ atelier.getDateDebut()|date('Y-m-d') }} au {{ atelier.getDateFin()|date('Y-m-d') }}
+                        </p>
+                        <p class="text-gray-600 text-sm mb-2">
+                            <span class="font-semibold">Salle :</span> {{ atelier.getSalle() }}
+                        </p>
+                        <p class="text-gray-600 text-sm mb-2">
+                            <span class="font-semibold">Métier :</span> {{ atelier.getMetier() }}
+                        </p>
+                        <p class="text-gray-600 text-sm mb-2">
+                            <span class="font-semibold">Ressource :</span> {{ atelier.getRessource() }}
+                        </p>
+                        <p class="text-gray-600 text-sm mb-2">
+                            <span class="font-semibold">Secteur :</span> {{ atelier.getSecteur() }}
+                        </p>
+                        <!-- Ajoutez d'autres informations selon vos besoins -->
+                    </div>
+
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-gray-500">Aucun atelier trouvé.</p>
+        {% endif %}
+    </div>
 {% endblock %}
