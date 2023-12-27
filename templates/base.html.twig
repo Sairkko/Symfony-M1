@@ -17,11 +17,14 @@
     <body>
     <div class="flex items-center justify-end gap-x-2 bg-blue-500 text-white text-xl">
         {% if app.user %}
-            <a class="p-4" href="/">Accueil</a>
-            <a class="p-4" href="/logout">Se déconnecter</a>
+            <a class="p-2 border border-white rounded m-1 hover:bg-blue-700" href="{{ path('homepage') }}">Accueil</a>
+            {% if 'ROLE_STUDENT' in app.user.roles %}
+                <a class="p-2 border border-white rounded m-1 hover:bg-blue-700" href="{{ path('user-profile', {'id': app.user.getInscriptionId()}) }}">{{ app.user.email }}</a>
+            {% endif %}
+            <a class="p-2 border border-white rounded m-1 hover:bg-blue-700" href="{{ path('logout') }}">Se déconnecter</a>
         {% else %}
-            <a class="p-4" href="/login">Se connecter</a>
-            <a class="p-4" href="/register">S'inscrire</a>
+            <a class="p-2 border border-white rounded m-1 hover:bg-blue-700" href="{{ path('app_login') }}">Se connecter</a>
+            <a class="p-2 border border-white rounded m-1 hover:bg-blue-700" href="{{ path('app_register') }}">S'inscrire</a>
         {% endif %}
     </div>
         {% block body %}{% endblock %}

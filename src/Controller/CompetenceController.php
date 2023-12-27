@@ -17,7 +17,7 @@ class CompetenceController extends AbstractController
     #[Route('/', name: 'app_competence_index', methods: ['GET'])]
     public function index(CompetenceRepository $competenceRepository): Response
     {
-        return $this->render('competence/index.html.twig', [
+        return $this->render('adminUser/competence/index.html.twig', [
             'competences' => $competenceRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class CompetenceController extends AbstractController
             return $this->redirectToRoute('app_competence_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('competence/new.html.twig', [
+        return $this->render('adminUser/competence/new.html.twig', [
             'competence' => $competence,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class CompetenceController extends AbstractController
     #[Route('/{id}', name: 'app_competence_show', methods: ['GET'])]
     public function show(Competence $competence): Response
     {
-        return $this->render('competence/show.html.twig', [
+        return $this->render('adminUser/competence/show.html.twig', [
             'competence' => $competence,
         ]);
     }
@@ -62,7 +62,7 @@ class CompetenceController extends AbstractController
             return $this->redirectToRoute('app_competence_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('competence/edit.html.twig', [
+        return $this->render('adminUser/competence/edit.html.twig', [
             'competence' => $competence,
             'form' => $form,
         ]);

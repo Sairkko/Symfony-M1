@@ -122,6 +122,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->inscription;
     }
 
+    public function getInscriptionId(): ?int
+    {
+        return $this->inscription?->getId();
+    }
+
     public function setInscription(Inscription $inscription): static
     {
         // set the owning side of the relation if necessary

@@ -1,40 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
     <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-        <h1 class="text-2xl font-semibold mb-6">Register</h1>
+        <h1 class="text-2xl font-semibold mb-6 text-center">Inscription</h1>
 
         {{ form_errors(registrationForm) }}
 
-        {{ form_start(registrationForm, {'attr': {'class': 'mb-6'}}) }}
+        {{ form_start(registrationForm, {'attr': {'class': 'space-y-4'}}) }}
 
-        {{ form_row(registrationForm.email, {'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}}) }}
+        {{ form_row(registrationForm.email, {
+            'attr': {'class': 'block w-full p-2 mb-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+        }) }}
         {{ form_row(registrationForm.plainPassword, {
             'label': 'Password',
-            'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}
+            'attr': {'class': 'block w-full p-2 mb-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
         }) }}
 
-        {{ form_row(registrationForm.inscription.nom, {'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}}) }}
+        {{ form_row(registrationForm.inscription.nom, {
+            'attr': {'class': 'block w-full p-2 mb-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+        }) }}
         {{ form_row(registrationForm.inscription.prenom, {
-            'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}
+            'attr': {'class': 'block w-full p-2 mb-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
         }) }}
 
-        {{ form_row(registrationForm.inscription.telephone, {'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}}) }}
+        {{ form_row(registrationForm.inscription.telephone, {
+            'attr': {'class': 'block w-full p-2 mb-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+        }) }}
         {{ form_row(registrationForm.inscription.lycee, {
-            'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}
+            'attr': {'class': 'block w-full p-2 mb-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
         }) }}
 
-        {{ form_row(registrationForm.inscription.section, {'attr': {'class': 'w-full p-2 mb-4 border rounded-md'}}) }}
+        {{ form_row(registrationForm.inscription.section, {
+            'attr': {'class': 'block w-full p-2 mb-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+        }) }}
 
-        <div class="flex gap-2 mb-2 items-center">
-            {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'mb-0'}}) }}
-            {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'mr-2'}}) }}
+        <div class="flex items-center mt-4">
+            {{ form_label(registrationForm.agreeTerms, null, {
+                'label_attr': {'class': 'block text-sm font-medium text-gray-600'}
+            }) }}
+            {{ form_widget(registrationForm.agreeTerms, {
+                'attr': {'class': 'ml-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded'}
+            }) }}
         </div>
 
-        <button type="submit" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none">
-            Register
+        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            S'inscrire
         </button>
         {{ form_end(registrationForm) }}
     </div>

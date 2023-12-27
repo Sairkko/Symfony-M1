@@ -22,10 +22,18 @@ class InscriptionType extends AbstractType
             ->add('lycee', EntityType::class, [
                 'class' => Lycee::class,
                 'choice_label' => 'nom',
+                'placeholder' => '-- Sélectionner un Lycée --',
+                'placeholder_attr' => [
+                    'disabled' => '',
+                ],
             ])
             ->add('section', EntityType::class, [
                 'class' => Section::class,
                 'choice_label' => 'nom',
+                'placeholder' => '-- Sélectionner une Section --',
+                'placeholder_attr' => [
+                    'disabled' => '',
+                ],
             ])
         ;
     }

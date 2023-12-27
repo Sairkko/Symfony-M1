@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if atelier is not empty %}
+<div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+    <h1 class="text-2xl font-semibold mb-6">Atelier: {{ atelier.nom }}</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th class="py-2 px-4 border">Nom</th>
+            <td class="py-2 px-4 border">{{ atelier.nom }}</td>
+        </tr>
+        <tr>
+            <th class="py-2 px-4 border">Intervenant</th>
+            <td class="py-2 px-4 border">{{ atelier.intervenant }}</td>
+        </tr>
+        <tr>
+            <th class="py-2 px-4 border">Salle</th>
+            <td class="py-2 px-4 border">{{ atelier.salle }}</td>
+        </tr>
+        <tr>
+            <th class="py-2 px-4 border">Secteur</th>
+            <td class="py-2 px-4 border">{{ atelier.secteur }}</td>
+        </tr>
+        <tr>
+            <th class="py-2 px-4 border">Ressource</th>
+            <td class="py-2 px-4 border">{{ atelier.ressource }}</td>
+        </tr>
+        <tr>
+            <th class="py-2 px-4 border">Date de début</th>
+            <td class="py-2 px-4 border">{{ atelier.date_debut ? inscription.getDateDebut|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th class="py-2 px-4 border">Date de fin</th>
+            <td class="py-2 px-4 border">{{ atelier.date_fin ? inscription.getDateFin|date('Y-m-d') : '' }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% else %}
+    <p class="text-gray-500">Aucun détail d'atelier disponible.</p>
+{% endif %}
+
+{% endblock %}
