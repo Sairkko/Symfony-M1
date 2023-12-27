@@ -17,7 +17,7 @@ class SecteurController extends AbstractController
     #[Route('/', name: 'app_secteur_index', methods: ['GET'])]
     public function index(SecteurRepository $secteurRepository): Response
     {
-        return $this->render('secteur/index.html.twig', [
+        return $this->render('adminUser/secteur/index.html.twig', [
             'secteurs' => $secteurRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class SecteurController extends AbstractController
             return $this->redirectToRoute('app_secteur_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('secteur/new.html.twig', [
+        return $this->render('adminUser/secteur/new.html.twig', [
             'secteur' => $secteur,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class SecteurController extends AbstractController
     #[Route('/{id}', name: 'app_secteur_show', methods: ['GET'])]
     public function show(Secteur $secteur): Response
     {
-        return $this->render('secteur/show.html.twig', [
+        return $this->render('adminUser/secteur/show.html.twig', [
             'secteur' => $secteur,
         ]);
     }
@@ -62,7 +62,7 @@ class SecteurController extends AbstractController
             return $this->redirectToRoute('app_secteur_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('secteur/edit.html.twig', [
+        return $this->render('adminUser/secteur/edit.html.twig', [
             'secteur' => $secteur,
             'form' => $form,
         ]);

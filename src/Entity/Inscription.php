@@ -22,7 +22,7 @@ class Inscription
     private ?string $telephone = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
+    private ?\DateTimeInterface $date;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
     private ?Lycee $lycee = null;

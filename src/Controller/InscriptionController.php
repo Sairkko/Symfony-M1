@@ -17,7 +17,7 @@ class InscriptionController extends AbstractController
     #[Route('/', name: 'app_inscription_index', methods: ['GET'])]
     public function index(InscriptionRepository $inscriptionRepository): Response
     {
-        return $this->render('inscription/index.html.twig', [
+        return $this->render('adminUser/inscription/index.html.twig', [
             'inscriptions' => $inscriptionRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class InscriptionController extends AbstractController
             return $this->redirectToRoute('app_inscription_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('inscription/new.html.twig', [
+        return $this->render('adminUser/inscription/new.html.twig', [
             'inscription' => $inscription,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class InscriptionController extends AbstractController
     #[Route('/{id}', name: 'app_inscription_show', methods: ['GET'])]
     public function show(Inscription $inscription): Response
     {
-        return $this->render('inscription/show.html.twig', [
+        return $this->render('adminUser/inscription/show.html.twig', [
             'inscription' => $inscription,
         ]);
     }
@@ -62,7 +62,7 @@ class InscriptionController extends AbstractController
             return $this->redirectToRoute('app_inscription_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('inscription/edit.html.twig', [
+        return $this->render('adminUser/inscription/edit.html.twig', [
             'inscription' => $inscription,
             'form' => $form,
         ]);

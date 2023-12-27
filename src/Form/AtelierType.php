@@ -7,7 +7,6 @@ use App\Entity\Metier;
 use App\Entity\Ressource;
 use App\Entity\Salle;
 use App\Entity\Secteur;
-use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,18 +21,34 @@ class AtelierType extends AbstractType
             ->add('intervenant')
             ->add('salle', EntityType::class, [
                 'class' => Salle::class,
-'choice_label' => 'nom',
+                'choice_label' => 'nom',
+                'placeholder' => '-- Sélectionner une Salle --',
+                'placeholder_attr' => [
+                    'disabled' => '',
+                ],
             ])
             ->add('metier', EntityType::class, [
                 'class' => Metier::class,
-'choice_label' => 'nom',
+                'choice_label' => 'nom',
+                'placeholder' => '-- Sélectionner un Métier --',
+                'placeholder_attr' => [
+                    'disabled' => '',
+                ],
             ])
             ->add('ressource', EntityType::class, [
                 'class' => Ressource::class,
+                'placeholder' => '-- Sélectionner une Ressource --',
+                'placeholder_attr' => [
+                    'disabled' => '',
+                ],
             ])
             ->add('secteur', EntityType::class, [
                 'class' => Secteur::class,
-'choice_label' => 'nom',
+                'choice_label' => 'nom',
+                'placeholder' => '-- Sélectionner un Secteur --',
+                'placeholder_attr' => [
+                    'disabled' => '',
+                ],
             ])
         ;
     }

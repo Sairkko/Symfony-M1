@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\AtelierRepository;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,5 +18,14 @@ class FrontController extends AbstractController
         return $this->render('front/index.html.twig', [
             'ateliers' => $ateliers,
         ]);
+    }
+
+    // création d'une route pour appeler le name dans un path
+    #[Route('/logout', name: 'logout')]
+
+    public function logout()
+    {
+        // Le contrôleur peut rester vide, car c'est le firewall de Symfony qui gère la déconnexion
+        throw new \RuntimeException('This should never be reached!');
     }
 }
