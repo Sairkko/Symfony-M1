@@ -24,26 +24,29 @@ class Atelier
     private ?Salle $salle = null;
 
     #[ORM\ManyToOne(inversedBy: 'ateliers')]
-    private ?Metier $metier = null;
-
-    #[ORM\ManyToOne(inversedBy: 'ateliers')]
     private ?Ressource $ressource = null;
 
     #[ORM\ManyToOne(inversedBy: 'ateliers')]
     private ?Secteur $secteur = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_debut = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_fin = null;
-
     #[ORM\Column(length: 255)]
     private ?string $intervenant = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_debut = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_fin = null;
+
+    #[ORM\ManyToMany(targetEntity: Metier::class, inversedBy: 'ateliers')]
+    private Collection $metier;
+
     public function __construct()
     {
+        $this->metier = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -75,17 +78,6 @@ class Atelier
         return $this;
     }
 
-    public function getMetier(): ?Metier
-    {
-        return $this->metier;
-    }
-
-    public function setMetier(?Metier $metier): static
-    {
-        $this->metier = $metier;
-
-        return $this;
-    }
 
     public function getRessource(): ?Ressource
     {
@@ -111,6 +103,20 @@ class Atelier
         return $this;
     }
 
+    public function getIntervenant(): ?string
+    {
+        return $this->intervenant;
+    }
+
+    public function setIntervenant(string $intervenant): static
+    {
+        $this->intervenant = $intervenant;
+
+        return $this;
+    }
+
+
+
     public function getDateDebut(): ?\DateTimeInterface
     {
         return $this->date_debut;
@@ -135,16 +141,29 @@ class Atelier
         return $this;
     }
 
-    public function getIntervenant(): ?string
+    /**
+     * @return Collection<int, Metier>
+     */
+    public function getMetier(): Collection
     {
-        return $this->intervenant;
+        return $this->metier;
     }
 
-    public function setIntervenant(string $intervenant): static
+    public function addMetier(Metier $metier): static
     {
-        $this->intervenant = $intervenant;
+        if (!$this->metier->contains($metier)) {
+            $this->metier->add($metier);
+        }
 
         return $this;
     }
+
+    public function removeMetier(Metier $metier): static
+    {
+        $this->metier->removeElement($metier);
+
+        return $this;
+    }
+
 
 }

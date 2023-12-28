@@ -23,7 +23,7 @@ class Competence
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\OneToMany(mappedBy: 'competence', targetEntity: Metier::class)]
+    #[ORM\ManyToMany(targetEntity: Metier::class, mappedBy: 'competence')]
     private Collection $metiers;
 
     public function __construct()
@@ -60,7 +60,7 @@ class Competence
     {
         if (!$this->metiers->contains($metier)) {
             $this->metiers->add($metier);
-            $metier->setCompetence($this);
+            $metier->addCompetence($this);
         }
 
         return $this;
@@ -69,12 +69,11 @@ class Competence
     public function removeMetier(Metier $metier): static
     {
         if ($this->metiers->removeElement($metier)) {
-            // set the owning side to null (unless already changed)
-            if ($metier->getCompetence() === $this) {
-                $metier->setCompetence(null);
-            }
+            $metier->removeCompetence($this);
         }
 
         return $this;
     }
+
+
 }

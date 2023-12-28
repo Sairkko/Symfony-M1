@@ -17,19 +17,17 @@ class MetierType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('atelier', EntityType::class, [
-                'class' => Atelier::class,
-'choice_label' => 'id',
-            ])
             ->add('competence', EntityType::class, [
                 'class' => Competence::class,
-'choice_label' => 'id',
-'multiple' => true,
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'expanded' => true,
             ])
             ->add('activite', EntityType::class, [
                 'class' => Activite::class,
-'choice_label' => 'id',
-'multiple' => true,
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'expanded' => true,
             ])
         ;
     }
