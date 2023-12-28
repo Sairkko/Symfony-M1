@@ -1,4 +1,4 @@
-Créer un .env.local et ajouter ceci
+Créer un .env.local et ajouter :
 
 ```
 # bdd Windows
@@ -8,7 +8,11 @@ Créer un .env.local et ajouter ceci
 # DATABASE_URL="mysql://root:root@127.0.0.1:8889/Symfony"
 ```
 
-Faire un composer install et npm install.
+Ensuite faire un :
+```
+composer install
+npm install
+```
 
 Lancer votre MAMP / XAMP / LAMP
 
