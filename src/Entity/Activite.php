@@ -23,7 +23,7 @@ class Activite
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\OneToMany(mappedBy: 'activite', targetEntity: Metier::class)]
+    #[ORM\ManyToMany(targetEntity: Metier::class, mappedBy: 'activite')]
     private Collection $metiers;
 
     public function __construct()
@@ -60,7 +60,7 @@ class Activite
     {
         if (!$this->metiers->contains($metier)) {
             $this->metiers->add($metier);
-            $metier->setActivite($this);
+            $metier->addActivite($this);
         }
 
         return $this;
@@ -69,12 +69,10 @@ class Activite
     public function removeMetier(Metier $metier): static
     {
         if ($this->metiers->removeElement($metier)) {
-            // set the owning side to null (unless already changed)
-            if ($metier->getActivite() === $this) {
-                $metier->setActivite(null);
-            }
+            $metier->removeActivite($this);
         }
 
         return $this;
     }
+
 }

@@ -15,6 +15,7 @@
                 <th class="py-2 px-4 border">Salle</th>
                 <th class="py-2 px-4 border">Secteur</th>
                 <th class="py-2 px-4 border">Ressource</th>
+                <th class="py-2 px-4 border">Métiers</th>
                 <th class="py-2 px-4 border">Actions</th>
             </tr>
             </thead>
@@ -27,6 +28,14 @@
                     <td class="py-2 px-4 border">{{ atelier.salle }}</td>
                     <td class="py-2 px-4 border">{{ atelier.secteur }}</td>
                     <td class="py-2 px-4 border">{{ atelier.ressource }}</td>
+                    <td class="py-2 px-4 border">
+                        {% for metiers in atelier.metier %}
+                            {{ metiers.nom }}{% if not loop.last %}, {% endif %}
+                        {% else %}
+                            Aucun métier
+                        {% endfor %}
+                    </td>
+
                     <td class="py-2 px-4 border">
                         <a href="{{ path('app_atelier_show', {'id': atelier.id}) }}" class="text-blue-500 hover:underline">show</a>
                         <a href="{{ path('app_atelier_edit', {'id': atelier.id}) }}" class="text-yellow-500 hover:underline">edit</a>

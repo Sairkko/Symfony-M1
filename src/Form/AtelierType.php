@@ -19,6 +19,8 @@ class AtelierType extends AbstractType
         $builder
             ->add('nom')
             ->add('intervenant')
+            ->add('date_debut')
+            ->add('date_fin')
             ->add('salle', EntityType::class, [
                 'class' => Salle::class,
                 'choice_label' => 'nom',
@@ -30,10 +32,8 @@ class AtelierType extends AbstractType
             ->add('metier', EntityType::class, [
                 'class' => Metier::class,
                 'choice_label' => 'nom',
-                'placeholder' => '-- Sélectionner un Métier --',
-                'placeholder_attr' => [
-                    'disabled' => '',
-                ],
+                'multiple' => true,
+                'expanded' => true
             ])
             ->add('ressource', EntityType::class, [
                 'class' => Ressource::class,

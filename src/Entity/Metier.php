@@ -23,18 +23,21 @@ class Metier
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToOne(inversedBy: 'metiers')]
-    private ?Competence $competence = null;
+    #[ORM\ManyToMany(targetEntity: Competence::class, inversedBy: 'metiers')]
+    private Collection $competence;
 
-    #[ORM\ManyToOne(inversedBy: 'metiers')]
-    private ?Activite $activite = null;
+    #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'metiers')]
+    private Collection $activite;
 
-    #[ORM\ManyToOne(inversedBy: 'metiers')]
-    private ?Atelier $atelier = null;
+    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'metier')]
+    private Collection $ateliers;
 
 
     public function __construct()
     {
+        $this->competence = new ArrayCollection();
+        $this->activite = new ArrayCollection();
+        $this->ateliers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -54,38 +57,77 @@ class Metier
         return $this;
     }
 
-    public function getCompetence(): ?Competence
+    /**
+     * @return Collection<int, Competence>
+     */
+    public function getCompetence(): Collection
     {
         return $this->competence;
     }
 
-    public function setCompetence(?Competence $competence): static
+    public function addCompetence(Competence $competence): static
     {
-        $this->competence = $competence;
+        if (!$this->competence->contains($competence)) {
+            $this->competence->add($competence);
+        }
 
         return $this;
     }
 
-    public function getActivite(): ?Activite
+    public function removeCompetence(Competence $competence): static
+    {
+        $this->competence->removeElement($competence);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activite>
+     */
+    public function getActivite(): Collection
     {
         return $this->activite;
     }
 
-    public function setActivite(?Activite $activite): static
+    public function addActivite(Activite $activite): static
     {
-        $this->activite = $activite;
+        if (!$this->activite->contains($activite)) {
+            $this->activite->add($activite);
+        }
 
         return $this;
     }
 
-    public function getAtelier(): ?Atelier
+    public function removeActivite(Activite $activite): static
     {
-        return $this->atelier;
+        $this->activite->removeElement($activite);
+
+        return $this;
     }
 
-    public function setAtelier(?Atelier $atelier): static
+    /**
+     * @return Collection<int, Atelier>
+     */
+    public function getAteliers(): Collection
     {
-        $this->atelier = $atelier;
+        return $this->ateliers;
+    }
+
+    public function addAtelier(Atelier $atelier): static
+    {
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->addMetier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAtelier(Atelier $atelier): static
+    {
+        if ($this->ateliers->removeElement($atelier)) {
+            $atelier->removeMetier($this);
+        }
 
         return $this;
     }
