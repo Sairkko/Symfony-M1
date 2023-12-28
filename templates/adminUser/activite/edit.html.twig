@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Activite{% endblock %}
+{% block title %}Éditer Activité{% endblock %}
 
 {% block body %}
-    <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-        <h1 class="text-2xl font-semibold mb-6">Edit Activite</h1>
+    <div class="max-w-md mx-auto my-8 p-6 bg-white rounded-md shadow-md">
+        <a href="{{ path('app_activite_index') }}" class="inline-block my-4 bg-blue-500 hover:bg-blue-700 mt-4 text-white p-2 rounded">
+            <i class="fa-solid fa-arrow-left fa-xl"></i>
+        </a>
+        <h1 class="text-2xl font-semibold mb-6">Éditer une activité</h1>
 
-        {{ include('adminUser/activite/_form.html.twig', {'button_label': 'Update'}) }}
-
-        <a href="{{ path('app_activite_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to list</a>
+        {{ include('adminUser/activite/_form.html.twig') }}
 
         {{ include('adminUser/activite/_delete_form.html.twig') }}
     </div>

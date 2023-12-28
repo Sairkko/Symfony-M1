@@ -21,12 +21,6 @@ class Atelier
     private ?string $nom = null;
 
     #[ORM\ManyToOne(inversedBy: 'ateliers')]
-    private ?Salle $salle = null;
-
-    #[ORM\ManyToOne(inversedBy: 'ateliers')]
-    private ?Ressource $ressource = null;
-
-    #[ORM\ManyToOne(inversedBy: 'ateliers')]
     private ?Secteur $secteur = null;
 
     #[ORM\Column(length: 255)]
@@ -41,9 +35,17 @@ class Atelier
     #[ORM\ManyToMany(targetEntity: Metier::class, inversedBy: 'ateliers')]
     private Collection $metier;
 
+    #[ORM\ManyToMany(targetEntity: Ressource::class, inversedBy: 'ateliers')]
+    private Collection $ressource;
+
+    #[ORM\ManyToMany(targetEntity: Salle::class, inversedBy: 'ateliers')]
+    private Collection $salle;
+
     public function __construct()
     {
         $this->metier = new ArrayCollection();
+        $this->ressource = new ArrayCollection();
+        $this->salle = new ArrayCollection();
     }
 
 
@@ -62,31 +64,6 @@ class Atelier
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getSalle(): ?Salle
-    {
-        return $this->salle;
-    }
-
-    public function setSalle(?Salle $salle): static
-    {
-        $this->salle = $salle;
-
-        return $this;
-    }
-
-
-    public function getRessource(): ?Ressource
-    {
-        return $this->ressource;
-    }
-
-    public function setRessource(?Ressource $ressource): static
-    {
-        $this->ressource = $ressource;
 
         return $this;
     }
@@ -161,6 +138,54 @@ class Atelier
     public function removeMetier(Metier $metier): static
     {
         $this->metier->removeElement($metier);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ressource>
+     */
+    public function getRessource(): Collection
+    {
+        return $this->ressource;
+    }
+
+    public function addRessource(Ressource $ressource): static
+    {
+        if (!$this->ressource->contains($ressource)) {
+            $this->ressource->add($ressource);
+        }
+
+        return $this;
+    }
+
+    public function removeRessource(Ressource $ressource): static
+    {
+        $this->ressource->removeElement($ressource);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Salle>
+     */
+    public function getSalle(): Collection
+    {
+        return $this->salle;
+    }
+
+    public function addSalle(Salle $salle): static
+    {
+        if (!$this->salle->contains($salle)) {
+            $this->salle->add($salle);
+        }
+
+        return $this;
+    }
+
+    public function removeSalle(Salle $salle): static
+    {
+        $this->salle->removeElement($salle);
 
         return $this;
     }

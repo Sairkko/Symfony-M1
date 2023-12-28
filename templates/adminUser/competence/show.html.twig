@@ -1,28 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Competence{% endblock %}
+{% block title %}Compétence{% endblock %}
 
 {% block body %}
-    <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-        <h1 class="text-2xl font-semibold mb-6">Competence</h1>
+    <div class="max-w-5xl mx-auto my-8 p-6 bg-white rounded-md shadow-md">
+        <div class="flex my-4">
+            <a href="{{ path('app_competence_index') }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">
+                <i class="fa-solid fa-arrow-left fa-xl"></i>
+            </a>
+        </div>
+        <h1 class="text-2xl font-semibold mb-6 text-start">Compétence</h1>
 
-        <table class="table w-full border-collapse">
+        <table class="min-w-full leading-normal">
             <tbody>
             <tr class="border-b">
-                <th class="py-2 px-4 border">Id</th>
-                <td class="py-2 px-4 border">{{ competence.id }}</td>
+                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Id</th>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ competence.id }}</td>
             </tr>
             <tr class="border-b">
-                <th class="py-2 px-4 border">Nom</th>
-                <td class="py-2 px-4 border">{{ competence.nom }}</td>
+                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nom</th>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ competence.nom }}</td>
             </tr>
             </tbody>
         </table>
-
-        <a href="{{ path('app_competence_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to list</a>
-
-        <a href="{{ path('app_competence_edit', {'id': competence.id}) }}" class="block mt-2 text-yellow-500 hover:underline">Edit</a>
-
-        {{ include('adminUser/competence/_delete_form.html.twig') }}
+        <div class="flex justify-start space-x-2 mt-4">
+            <a href="{{ path('app_competence_edit', {'id': competence.id}) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white p-2 rounded">
+                <i class="fa-solid fa-pen-to-square fa-xl"></i>
+            </a>
+            {{ include('adminUser/competence/_delete_form.html.twig') }}
+        </div>
     </div>
 {% endblock %}

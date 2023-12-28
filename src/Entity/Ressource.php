@@ -27,8 +27,9 @@ class Ressource
     #[ORM\Column(type: Types::TEXT)]
     private ?string $contenu = null;
 
-    #[ORM\OneToMany(mappedBy: 'ressource', targetEntity: Atelier::class)]
+    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'ressource')]
     private Collection $ateliers;
+
 
     public function __construct()
     {
@@ -76,7 +77,7 @@ class Ressource
     {
         if (!$this->ateliers->contains($atelier)) {
             $this->ateliers->add($atelier);
-            $atelier->setRessource($this);
+            $atelier->addRessource($this);
         }
 
         return $this;
@@ -85,12 +86,10 @@ class Ressource
     public function removeAtelier(Atelier $atelier): static
     {
         if ($this->ateliers->removeElement($atelier)) {
-            // set the owning side to null (unless already changed)
-            if ($atelier->getRessource() === $this) {
-                $atelier->setRessource(null);
-            }
+            $atelier->removeRessource($this);
         }
 
         return $this;
     }
+
 }
