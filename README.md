@@ -10,6 +10,8 @@ Créer un .env.local et ajouter ceci
 
 Faire un composer install et npm install.
 
+Lancer votre MAMP / XAMP / LAMP
+
 Créer la bdd :
 ```
 php bin/console d:d:c
