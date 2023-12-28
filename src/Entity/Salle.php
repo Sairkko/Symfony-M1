@@ -29,12 +29,13 @@ class Salle
     #[ORM\Column]
     private ?int $capacite_maximum = null;
 
-    #[ORM\OneToMany(mappedBy: 'salle', targetEntity: Atelier::class)]
-    private Collection $atelier;
+    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'salle')]
+    private Collection $ateliers;
+
 
     public function __construct()
     {
-        $this->atelier = new ArrayCollection();
+        $this->ateliers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,16 +82,16 @@ class Salle
     /**
      * @return Collection<int, Atelier>
      */
-    public function getAtelier(): Collection
+    public function getAteliers(): Collection
     {
-        return $this->atelier;
+        return $this->ateliers;
     }
 
     public function addAtelier(Atelier $atelier): static
     {
-        if (!$this->atelier->contains($atelier)) {
-            $this->atelier->add($atelier);
-            $atelier->setSalle($this);
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->addSalle($this);
         }
 
         return $this;
@@ -98,13 +99,11 @@ class Salle
 
     public function removeAtelier(Atelier $atelier): static
     {
-        if ($this->atelier->removeElement($atelier)) {
-            // set the owning side to null (unless already changed)
-            if ($atelier->getSalle() === $this) {
-                $atelier->setSalle(null);
-            }
+        if ($this->ateliers->removeElement($atelier)) {
+            $atelier->removeSalle($this);
         }
 
         return $this;
     }
+
 }

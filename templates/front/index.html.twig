@@ -66,19 +66,28 @@
                             <span class="font-semibold">Date :</span> Du {{ atelier.getDateDebut()|date('d-m-Y') }} au {{ atelier.getDateFin()|date('d-m-Y') }}
                         </p>
                         <p class="text-gray-600 text-sm mb-2">
-                            <span class="font-semibold">Salle :</span> {{ atelier.getSalle() }}
+                            <span class="font-semibold">Salle :</span>
+                            {% for salle in atelier.getSalle() %}
+                                {{ salle.getNom() }}{% if not loop.last %}, {% endif %}
+                            {% else %}
+                                Aucune salle associé
+                            {% endfor %}
                         </p>
                         <p class="text-gray-600 text-sm mb-2">
-                            <span class="font-semibold">Métier(s) :
+                            <span class="font-semibold">Métier(s) :</span>
                             {% for metier in atelier.getMetier() %}
                                 {{ metier.getNom() }}{% if not loop.last %}, {% endif %}
                             {% else %}
                                 Aucun métier associé
                             {% endfor %}
-                        </span>
                         </p>
                         <p class="text-gray-600 text-sm mb-2">
-                            <span class="font-semibold">Ressource :</span> {{ atelier.getRessource() }}
+                            <span class="font-semibold">Ressource :</span>
+                            {% for ressource in atelier.getRessource() %}
+                                {{ ressource.getNom() }}{% if not loop.last %}, {% endif %}
+                            {% else %}
+                                Aucune ressource associé
+                            {% endfor %}
                         </p>
                         <p class="text-gray-600 text-sm mb-2">
                             <span class="font-semibold">Secteur :</span> {{ atelier.getSecteur() }}

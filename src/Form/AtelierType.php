@@ -24,10 +24,8 @@ class AtelierType extends AbstractType
             ->add('salle', EntityType::class, [
                 'class' => Salle::class,
                 'choice_label' => 'nom',
-                'placeholder' => '-- Sélectionner une Salle --',
-                'placeholder_attr' => [
-                    'disabled' => '',
-                ],
+                'multiple' => true,
+                'expanded' => true
             ])
             ->add('metier', EntityType::class, [
                 'class' => Metier::class,
@@ -37,10 +35,8 @@ class AtelierType extends AbstractType
             ])
             ->add('ressource', EntityType::class, [
                 'class' => Ressource::class,
-                'placeholder' => '-- Sélectionner une Ressource --',
-                'placeholder_attr' => [
-                    'disabled' => '',
-                ],
+                'multiple' => true,
+                'expanded' => true
             ])
             ->add('secteur', EntityType::class, [
                 'class' => Secteur::class,
