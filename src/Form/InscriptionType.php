@@ -22,7 +22,7 @@ class InscriptionType extends AbstractType
             ->add('lycee', EntityType::class, [
                 'class' => Lycee::class,
                 'choice_label' => 'nom',
-                'placeholder' => '-- Sélectionner un Lycée --',
+                'placeholder' => '-- Sélectionner un lycée --',
                 'placeholder_attr' => [
                     'disabled' => '',
                 ],
@@ -30,7 +30,7 @@ class InscriptionType extends AbstractType
             ->add('section', EntityType::class, [
                 'class' => Section::class,
                 'choice_label' => 'nom',
-                'placeholder' => '-- Sélectionner une Section --',
+                'placeholder' => '-- Sélectionner une section --',
                 'placeholder_attr' => [
                     'disabled' => '',
                 ],
