@@ -17,7 +17,7 @@
     </head>
 
     {% if app.request.pathinfo == path('app_login') or app.request.pathinfo == path('app_register') %}
-    <body style="background: rgb(203,226,255); background: linear-gradient(45deg, rgba(203,226,255,1) 0%, rgba(170,215,255,1) 50%, rgba(96,164,255,1) 100%);"></body>
+    <body class="h-screen overflow-hidden" style="background: rgb(203,226,255); background: linear-gradient(45deg, rgba(203,226,255,1) 0%, rgba(170,215,255,1) 50%, rgba(96,164,255,1) 100%);"></body>
     {% else %}
     <body>
         <div class="flex items-center justify-end gap-x-2 bg-blue-500 text-white text-xl">

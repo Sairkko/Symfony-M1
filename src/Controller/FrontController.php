@@ -11,13 +11,23 @@ class FrontController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
 
-    public function index(AtelierRepository $atelierRepository): Response
+    public function index(): Response
+    {
+
+        return $this->render('front/index.html.twig', [
+        ]);
+    }
+
+    #[Route('/all-ateliers', name: 'all-articles')]
+
+    public function allAteliers(AtelierRepository $atelierRepository): Response
     {
         $ateliers = $atelierRepository->findAll();
 
-        return $this->render('front/index.html.twig', [
+        return $this->render('front/all-articles.html.twig', [
             'ateliers' => $ateliers,
         ]);
+
     }
 
     // création d'une route pour appeler le name dans un path
