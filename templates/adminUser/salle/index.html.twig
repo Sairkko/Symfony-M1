@@ -4,31 +4,36 @@
 
 {% block body %}
     <div class="max-w-5xl mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-        <h1 class="text-2xl font-semibold mb-6">Salles</h1>
+        <div class="flex my-4">
+            <a href="{{ path('homepage') }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">
+                <p>Back {#<i class="fa-solid fa-arrow-left fa-xl"></i>#}</p>
+            </a>
+        </div>
+        <h1 class="text-2xl font-semibold mb-6 text-center">Salles</h1>
 
-        <table class="min-w-full leading-normal">
+        <table class="min-w-full leading-normal mt-12 mb-12">
             <thead>
-            <tr>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Id</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nom</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Etage</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Capacité maximum</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
+            <tr class="bg-blue-500 text-white p-5">
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider text-left pl-4">Id</th>
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider text-left pl-4">Nom</th>
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider text-left pl-4">Etage</th>
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider text-left pl-4">Capacité maximum</th>
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider">Actions</th>
             </tr>
             </thead>
             <tbody>
             {% for salle in salles %}
-                <tr>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ salle.id }}</td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ salle.nom }}</td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ salle.etage }}</td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ salle.getCapaciteMaximum }}</td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <a href="{{ path('app_salle_show', {'id': salle.id}) }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">
-                            <i class="fa-regular fa-eye fa-xl"></i>
+                <tr class="hover:bg-gray-100">
+                    <td class="px-4 py-2">{{ salle.id }}</td>
+                    <td class="px-4 py-2">{{ salle.nom }}</td>
+                    <td class="px-4 py-2">{{ salle.etage }}</td>
+                    <td class="px-4 py-2">{{ salle.getCapaciteMaximum }}</td>
+                    <td class="px-4 py-2 flex justify-center">
+                        <a href="{{ path('app_salle_show', {'id': salle.id}) }}" class="flex items-center inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">
+                            <p>show{# <i class="fa-solid fa-eye fa-xl"></i> #}</p>
                         </a>
                         <a href="{{ path('app_salle_edit', {'id': salle.id}) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white p-2 rounded ml-4">
-                            <i class="fa-solid fa-pen-to-square fa-xl"></i>
+                            <p>edit{# <i class="fa-solid fa-pen fa-xl"></i> #}</p>
                         </a>
                     </td>
                 </tr>
@@ -41,7 +46,7 @@
         </table>
 
         <a href="{{ path('app_salle_new') }}" class="mt-4 bg-green-500 hover:bg-green-700 text-white p-2 rounded inline-block">
-            <i class="fa-solid fa-plus fa-xl"></i>
+            <p>Add <i class="fa-solid fa-plus fa-xl"></i></p>
         </a>
     </div>
 {% endblock %}

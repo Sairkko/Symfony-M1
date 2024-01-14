@@ -3,30 +3,35 @@
 {% block title %}Secteur{% endblock %}
 
 {% block body %}
-    <div class="max-w-5xl mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-        <h1 class="text-2xl font-semibold mb-6">Secteur</h1>
+    <div class="max-w-7xl mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+        <div class="flex my-4">
+            <a href="{{ path('homepage') }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">
+                <p>Back {#<i class="fa-solid fa-arrow-left fa-xl"></i>#}</p>
+            </a>
+        </div>
+        <h1 class="text-2xl font-semibold mb-6 text-center">Secteur</h1>
 
-        <table class="min-w-full leading-normal">
+        <table class="min-w-full leading-normal mt-12 mb-12">
             <thead>
-            <tr>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Id</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nom</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Description</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
+            <tr class="bg-blue-500 text-white p-5">
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider text-left pl-4">Id</th>
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider text-left pl-4">Nom</th>
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider text-left pl-4">Description</th>
+                <th class="px-5 py-3 text-sm font-semibold uppercase tracking-wider">Actions</th>
             </tr>
             </thead>
             <tbody>
             {% for secteur in secteurs %}
-                <tr>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ secteur.id }}</td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ secteur.nom }}</td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ secteur.description }}</td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <tr class="hover:bg-gray-100">
+                    <td class="px-4 py-2">{{ secteur.id }}</td>
+                    <td class="px-4 py-2">{{ secteur.nom }}</td>
+                    <td class="px-4 py-2">{{ secteur.description }}</td>
+                    <td class="px-4 py-2 flex justify-center">
                         <a href="{{ path('app_secteur_show', {'id': secteur.id}) }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">
-                            <i class="fa-regular fa-eye fa-xl"></i>
+                            <p>show{# <i class="fa-solid fa-eye fa-xl"></i> #}</p>
                         </a>
                         <a href="{{ path('app_secteur_edit', {'id': secteur.id}) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white p-2 rounded ml-4">
-                            <i class="fa-solid fa-pen-to-square fa-xl"></i>
+                            <p>edit{# <i class="fa-solid fa-pen fa-xl"></i> #}</p>
                         </a>
                     </td>
                 </tr>
@@ -39,7 +44,7 @@
         </table>
 
         <a href="{{ path('app_secteur_new') }}" class="mt-4 bg-green-500 hover:bg-green-700 text-white p-2 rounded inline-block">
-            <i class="fa-solid fa-plus fa-xl"></i>
+            <p>Add <i class="fa-solid fa-plus fa-xl"></i></p>
         </a>
     </div>
 {% endblock %}

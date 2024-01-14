@@ -3,58 +3,59 @@
     <div class="container mx-auto">
         {% if is_granted('ROLE_ADMIN') %}
             <div class="grid gap-2 m-24 mb-0 mt-8">
-                <div class="border-2 col-span-12 border-blue-500 rounded-lg align-center flex flex-col gap-y-2 text-center items-center justify-center p-2">
-                    <p class="text-2xl">Ateliers</p>
+                <div class="col-span-12 border-blue-500 rounded-lg align-center flex flex-col gap-y-2 text-center items-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Ateliers</p>
                     <p>Liste de tous les ateliers disponibles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_atelier_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_atelier_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Métier</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Métier</p>
                     <p>Liste de tous les métiers disponibles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_metier_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_metier_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Activités</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Activités</p>
                     <p>Liste de toutes les activités disponibles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_activite_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_activite_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Compétences</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Compétences</p>
                     <p>Liste de toutes les compétences</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_competence_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_competence_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Secteurs</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Secteurs</p>
                     <p>Liste de tous les secteurs</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_secteur_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_secteur_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Ressources</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Ressources</p>
                     <p>Liste de toutes les ressources disponibles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_ressource_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_ressource_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Salles</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Salles</p>
                     <p>Liste de toutes les salles</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_salle_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_salle_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Lycéens</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Lycéens</p>
                     <p>Liste de tous les lycéens</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_inscription_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_inscription_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Lycée</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Lycée</p>
                     <p>Liste de tous les lycées des lycéens</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_lycee_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_lycee_index') }}">Détails</a>
                 </div>
-                <div class="border-2 col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-2">
-                    <p class="text-2xl">Sections</p>
+                <div class="col-span-4 border-blue-500 rounded-lg flex flex-col gap-y-2 items-center text-center justify-center p-8 shadow-lg m-8 hover:bg-gray-100">
+                    <p class="text-2xl mb-4">Sections</p>
                     <p>Liste de toutes les sections</p>
-                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white" href="{{ path('app_section_index') }}">Détails</a>
+                    <a class="bg-blue-500 py-1 px-3 rounded-lg text-white mt-4" href="{{ path('app_section_index') }}">Détails</a>
                 </div>
             </div>
         {% endif %}
+        <div class="mb-20 mt-4">
         <h1 class="text-2xl font-bold mb-4 p-6 text-center">Forum 2024 - Liste des ateliers</h1>
 
         {% if ateliers is not empty %}
@@ -84,7 +85,7 @@
                         <p class="text-gray-600 text-sm mb-2">
                             <span class="font-semibold">Ressource :</span>
                             {% for ressource in atelier.getRessource() %}
-                                {{ ressource.getNom() }}{% if not loop.last %}, {% endif %}
+                                {{ ressource.getType() }}{% if not loop.last %}, {% endif %}
                             {% else %}
                                 Aucune ressource associé
                             {% endfor %}
@@ -109,5 +110,6 @@
         {% else %}
             <p class="text-gray-500">Aucun atelier trouvé.</p>
         {% endif %}
+    </div>
     </div>
 {% endblock %}
