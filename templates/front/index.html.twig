@@ -85,7 +85,7 @@
                         <p class="text-gray-600 text-sm mb-2">
                             <span class="font-semibold">Ressource :</span>
                             {% for ressource in atelier.getRessource() %}
-                                {{ ressource.getNom() }}{% if not loop.last %}, {% endif %}
+                                {{ ressource.getType() }}{% if not loop.last %}, {% endif %}
                             {% else %}
                                 Aucune ressource associé
                             {% endfor %}
