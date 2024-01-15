@@ -26,10 +26,10 @@ class Atelier
     #[ORM\Column(length: 255)]
     private ?string $intervenant = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_debut = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fin = null;
 
     #[ORM\ManyToMany(targetEntity: Metier::class, inversedBy: 'ateliers')]
